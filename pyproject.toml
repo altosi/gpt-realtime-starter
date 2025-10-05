@@ -1,0 +1,16 @@
+[project]
+name = "gpt-realtime-starter"
+version = "0.1.0"
+description = "A starter project demonstrating how to connect to OpenAI's gpt-realtime speech-to-speech API"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=2.2.6,<3.0.0",
+    "openai>=2.1.0,<3.0.0",
+    "sounddevice>=0.5.2,<0.6.0",
+    "websockets>=15.0.1,<16.0.0",
+]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.13.1",
+]
