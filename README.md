@@ -7,7 +7,8 @@ This starter demonstrates how to connect to OpenAI's gpt-realtime speech-to-spee
 - Basic realtime connection and event logging (`connect.py`)
 - Microphone capture and transcription of model output (`connect_and_record.py`)
 - Full duplex audio: capture microphone and play assistant audio (`connect_record_and_playback.py`)
-- Remote MCP tool usage with GitHub (read-only by default) and interactive approvals (`connect_and_use_a_tool.py`)
+- Remote MCP tool usage with GitHub (read-only by default)  (`connect_and_use_a_tool.py`)
+- Remote MCP tool usage with approvals (`connect_and_use_a_tool_with_approval.py`)
 
 For background, context, and walkthrough, see the accompanying article: "Creating a realtime voice agent using OpenAI's new gpt-realtime speech-to-speech model" published on dev.to.
 
@@ -42,7 +43,7 @@ pip install -e .
 ## Environment variables
 
 - `OPENAI_API_KEY` (required): Your OpenAI API key.
-- `GITHUB_PAT` (optional): GitHub Personal Access Token (read-only recommended) to enable the GitHub MCP server in `connect_and_use_a_tool.py`.
+- `GITHUB_PAT` (optional): GitHub Personal Access Token (read-only recommended) to enable the GitHub MCP server in `connect_and_use_a_tool.py` and `connect_and_use_a_tool_with_approval.py`.
 
 ## Quick start
 
@@ -52,7 +53,7 @@ pip install -e .
 OPENAI_API_KEY=... python connect.py
 ```
 
-### Microphone capture with live transcript
+### Microphone capture
 
 ```bash
 OPENAI_API_KEY=... python connect_and_record.py
@@ -68,10 +69,16 @@ OPENAI_API_KEY=... python connect_record_and_playback.py
 
 ### Use a remote MCP tool (GitHub)
 
-Provides read-only GitHub queries via the GitHub MCP server, with interactive approvals for sensitive tools.
+Provides read-only GitHub queries via the GitHub MCP server.
 
 ```bash
 OPENAI_API_KEY=... GITHUB_PAT=... python connect_and_use_a_tool.py
+```
+or with additional interactive approvals:
+
+```shell
+OPENAI_API_KEY=... GITHUB_PAT=... python connect_and_use_a_tool_with_approval.py
+
 ```
 
 ## Project structure
@@ -79,12 +86,13 @@ OPENAI_API_KEY=... GITHUB_PAT=... python connect_and_use_a_tool.py
 - `connect.py`: Creates a realtime session, logs server events.
 - `connect_and_record.py`: Streams microphone audio to the model, logs transcript segments.
 - `connect_record_and_playback.py`: Adds audio playback for assistant audio deltas.
-- `connect_and_use_a_tool.py`: Enables an MCP server (GitHub). Demonstrates allow/deny lists and interactive approvals.
+- `connect_and_use_a_tool.py`: Enables an MCP server (GitHub).
+- `connect_and_use_a_tool_with_approval.py`: Demonstrates allow/deny lists and interactive approvals.
 - `pyproject.toml`: Dependencies (`openai`, `numpy`, `sounddevice`, `websockets`).
 
 ## Audio notes
 
-- Sample rate: 24kHz, mono, 16-bit PCM to match gpt-realtime defaults.
+- Sample rate: 24kHz, mono, 16-bit PCM to match `gpt-realtime`.
 - Headphones strongly recommended to avoid the model hearing itself (no echo cancellation).
 - If your default device is incorrect, set input/output device explicitly with `sounddevice` or system settings.
 
