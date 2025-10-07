@@ -10,7 +10,7 @@ This starter demonstrates how to connect to OpenAI's gpt-realtime speech-to-spee
 - Remote MCP tool usage with GitHub (read-only by default)  (`connect_and_use_a_tool.py`)
 - Remote MCP tool usage with approvals (`connect_and_use_a_tool_with_approval.py`)
 
-For background, context, and walkthrough, see the accompanying article: "Creating a realtime voice agent using OpenAI's new gpt-realtime speech-to-speech model" published on dev.to.
+For background, context, and walkthrough, see the accompanying article: [Creating a realtime voice agent using OpenAI's new gpt-realtime speech-to-speech model](https://dev.to/matthewmascord/creating-a-realtime-voice-agent-using-openais-new-gpt-realtime-speech-to-speech-model-2ehb).
 
 ## Requirements
 
